@@ -13,7 +13,8 @@ def get_log_entry(log_index, debug=False):
     response = requests.get(url)
     response.raise_for_status()
     data = response.json()
-    if debug: print(data)
+    if debug:
+        print(data)
     
     return data
 
@@ -58,11 +59,12 @@ def inclusion(log_index, artifact_filepath, debug=False):
 
 
 def get_latest_checkpoint(debug=False):
-    url = f"https://rekor.sigstore.dev/api/v1/log"
+    url = "https://rekor.sigstore.dev/api/v1/log"
     response = requests.get(url)
     response.raise_for_status()
     checkpoint = response.json()
-    if debug: print(checkpoint)
+    if debug:
+        print(checkpoint)
     return checkpoint
 
 def consistency(prev_checkpoint, debug=False):
