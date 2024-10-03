@@ -126,8 +126,7 @@ def consistency(prev_checkpoint, debug=False):
     first_size = prev_checkpoint.get("treeSize")
     last_size = latest_checkpoint.get("treeSize")
     tree_id = latest_checkpoint.get("treeID")
-    url = f"https://rekor.sigstore.dev/api/v1/log/proof?firstSize=\
-        {first_size}&lastSize={last_size}&treeID={tree_id}"
+    url = f"https://rekor.sigstore.dev/api/v1/log/proof?firstSize={first_size}&lastSize={last_size}&treeID={tree_id}"
     response = requests.get(url, timeout=10)
     response.raise_for_status()
     proof = response.json()
