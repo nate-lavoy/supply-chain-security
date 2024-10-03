@@ -99,10 +99,9 @@ def verify_consistency(hasher, sizes, proof, roots):
         RootMismatchError: If the calculated roots do not match the expected roots.
     """
     # change format of args to be bytearray instead of hex strings
-    roots = bytes.fromhex(roots)
+    roots = (bytes.fromhex(roots[0]), bytes.fromhex(roots[1]))
     bytearray_proof = []
     for elem in proof:
-
         bytearray_proof.append(bytes.fromhex(elem))
 
     if sizes[1] < sizes[0]:
@@ -120,7 +119,7 @@ def verify_consistency(hasher, sizes, proof, roots):
     if not bytearray_proof:
         raise ValueError("empty bytearray_proof")
 
-    inner, border = decomp_incl_proof(sizes[1] - 1, sizes[1])
+    inner, border = decomp_incl_proof(sizes[0] - 1, sizes[1])
     shift = (sizes[0] & -sizes[0]).bit_length() - 1
     inner -= shift
 
