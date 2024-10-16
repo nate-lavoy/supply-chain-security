@@ -1,5 +1,6 @@
 __pycache__/
-venv/
+.venv/
 code tests/
 artifact.bundle
 artifact.md
+.DS_Store
