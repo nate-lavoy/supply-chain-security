@@ -110,11 +110,13 @@ def verify_consistency(hasher, sizes, proof, roots):
         if bytearray_proof:
             raise ValueError("size1=size2, but bytearray_proof is not empty")
         verify_match(roots[0], roots[1])
+        print("Consistency verification succeeded: The trees are consistent.")
         return
     if sizes[0] == 0:
         if bytearray_proof:
             raise ValueError(f"expected empty bytearray_proof,\
                               but got {len(bytearray_proof)} components")
+        print("Consistency verification succeeded: The trees are consistent.")
         return
     if not bytearray_proof:
         raise ValueError("empty bytearray_proof")
@@ -142,6 +144,7 @@ def verify_consistency(hasher, sizes, proof, roots):
     hash2 = chain_inner(hasher, seed, bytearray_proof[:inner], mask)
     hash2 = chain_border_right(hasher, hash2, bytearray_proof[inner:])
     verify_match(hash2, roots[1])
+    print("Consistency verification succeeded: The trees are consistent.")
 
 def verify_match(calculated, expected):
     """
