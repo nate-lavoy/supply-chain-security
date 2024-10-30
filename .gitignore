@@ -4,3 +4,4 @@ code tests/
 artifact.bundle
 artifact.md
 .DS_Store
+git-filter-repo
