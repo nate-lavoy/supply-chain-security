@@ -16,6 +16,8 @@ mypy = "^1.13.0"
 ruff = "^0.7.1"
 pylint = "^3.3.1"
 bandit = "^1.7.10"
+pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -27,4 +29,7 @@ line-length = 118
 [tool.pylint]
 max-line-length = 118
 
+[tool.pytest.ini_options]
+addopts = "--maxfail=1 -v"  # Stop on the first failure and increase verbosity
+testpaths = ["tests"]       # Directory where tests are located
 
