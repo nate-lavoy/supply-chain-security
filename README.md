@@ -12,7 +12,7 @@ You can install Rekor Monitor directly from PyPI:
 
 ```bash
 pip install rekor-monitor
-
+```
 
 ## Using the Code
 
@@ -29,10 +29,10 @@ pip install rekor-monitor
 
    ```bash
    rekor-monitor --inclusion <logIndex> --artifact <artifactFilePath>
+   ```
+- Replace <logIndex> with the index of the log entry.
 
-   -Replace <logIndex> with the index of the log entry.
-
-   -Replace <artifactFilePath> with the path to your artifact file.
+- Replace <artifactFilePath> with the path to your artifact file.
 
 3. **Verifying Checkpoint Consistency:**
 
@@ -40,9 +40,10 @@ pip install rekor-monitor
 
    ```bash
    rekor-monitor --consistency --tree-id <treeID> --tree-size <treeSize> --root-hash <rootHash>
+   ```
 
-   -Replace <treeID> with the ID of the Merkle tree.
+- Replace <treeID> with the ID of the Merkle tree.
 
-   -Replace <treeSize> with the size of the previous tree.
+- Replace <treeSize> with the size of the previous tree.
    
-   -Replace <rootHash> with the root hash of the previous checkpoint.
+- Replace <rootHash> with the root hash of the previous checkpoint.
