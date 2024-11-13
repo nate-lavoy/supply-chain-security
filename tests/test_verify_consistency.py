@@ -1,6 +1,6 @@
 #validates that verify_consistency correctly confirms whether two Merkle trees of different sizes share a consistent structure and root
 
-from merkle_proof import verify_consistency, DefaultHasher, RootMismatchError
+from rekor_monitor.merkle_proof import verify_consistency, DefaultHasher, RootMismatchError
 
 def test_verify_consistency_identical_trees():
     # Identical trees (same root and proof)

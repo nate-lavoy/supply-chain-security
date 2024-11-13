@@ -3,7 +3,7 @@
 import pytest
 from cryptography.exceptions import InvalidSignature
 
-from util import verify_artifact_signature
+from rekor_monitor.util import verify_artifact_signature
 
 def test_verify_artifact_signature_with_invalid_public_key_format(tmp_path):
     # Create a temporary artifact file

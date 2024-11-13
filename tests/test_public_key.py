@@ -2,8 +2,8 @@
 
 import base64
 import json
-from main import get_log_entry
-from util import extract_public_key
+from rekor_monitor.main import get_log_entry
+from rekor_monitor.util import extract_public_key
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
 from cryptography.hazmat.backends import default_backend
 

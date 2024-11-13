@@ -20,7 +20,7 @@ checkpoint_schema = {
 def test_get_latest_checkpoint():
     # Run main.py as a subprocess with the '-c' flag to get the checkpoint
     result = subprocess.run(
-        ['python', 'main.py', '-c'],
+        ['python', '-m', 'rekor_monitor.main', '-c'],
         capture_output=True,
         text=True
     )

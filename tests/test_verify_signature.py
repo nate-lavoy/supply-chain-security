@@ -1,7 +1,7 @@
 #verifies that verify_artifact_signature raises a FileNotFoundError when the specified artifact file is missing.
 
 import pytest
-from util import verify_artifact_signature
+from rekor_monitor.util import verify_artifact_signature
 
 def test_verify_artifact_signature_missing_file():
     # Prepare a valid public key and dummy signature

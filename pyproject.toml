@@ -1,15 +1,16 @@
 [tool.poetry]
-name = "rekor monitor"
-version = "2.5.0"
+name = "rekor-monitor"
+version = "4.0"
 description = "An auditing system for Sigstore signatures"
-authors = ["Nate Lavoy"]
+authors = ["Nate Lavoy <nl2587@nyu.edu>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
 requests = "^2.32.3"
 cryptography = "^43.0.3"
-
+jsonschema = "^4.23.0"
+pre-commit = "^4.0.1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.13.0"

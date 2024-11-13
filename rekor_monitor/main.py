@@ -9,8 +9,8 @@ import base64
 
 import requests
 
-from util import extract_public_key, verify_artifact_signature
-from merkle_proof import DefaultHasher, verify_consistency, verify_inclusion, compute_leaf_hash
+from rekor_monitor.util import extract_public_key, verify_artifact_signature
+from rekor_monitor.merkle_proof import DefaultHasher, verify_consistency, verify_inclusion, compute_leaf_hash
 
 def get_log_entry(log_index, debug=False):
     """

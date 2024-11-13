@@ -2,7 +2,7 @@
 
 import json
 import base64
-from main import get_log_entry
+from rekor_monitor.main import get_log_entry
 
 def test_inclusion_proof():
     log_index = 146550281

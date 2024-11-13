@@ -2,7 +2,7 @@
 
 import base64
 import json
-from main import get_log_entry
+from rekor_monitor.main import get_log_entry
 
 def test_decode_signature_and_certificate():
     # Use a known valid log index with a signature and certificate

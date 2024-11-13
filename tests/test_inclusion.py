@@ -36,13 +36,13 @@ def test_main_inclusion_argument(monkeypatch, tmp_path):
         assert proof == ["mock_hash1", "mock_hash2"]
 
     # Replace the real functions with the mocks for testing
-    monkeypatch.setattr("main.get_log_entry", mock_get_log_entry)
-    monkeypatch.setattr("main.verify_artifact_signature", mock_verify_artifact_signature)
-    monkeypatch.setattr("main.verify_inclusion", mock_verify_inclusion)
+    monkeypatch.setattr("rekor_monitor.main.get_log_entry", mock_get_log_entry)
+    monkeypatch.setattr("rekor_monitor.main.verify_artifact_signature", mock_verify_artifact_signature)
+    monkeypatch.setattr("rekor_monitor.main.verify_inclusion", mock_verify_inclusion)
 
     # Run the main script with inclusion argument
     result = subprocess.run(
-        ["python", "main.py", "--inclusion", "126574567", "--artifact", str(artifact_file)],
+        ["python", "-m" "rekor_monitor.main", "--inclusion", "126574567", "--artifact", str(artifact_file)],
         capture_output=True, text=True
     )
 

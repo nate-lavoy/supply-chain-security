@@ -1,7 +1,7 @@
 #Ensures get_log_entry fetches a log entry and includes required keys
 
 import json
-from main import get_log_entry
+from rekor_monitor.main import get_log_entry
 
 def test_get_log_entry():
     log_index = 146550281  # index from my artifact, can be changed
