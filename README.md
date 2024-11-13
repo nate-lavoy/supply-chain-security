@@ -1,61 +1,48 @@
 # Rekor Monitor
 
-An auditing system for Sigstore signatures
+An auditing system for Sigstore signatures.
+
+## Project Description
+
+Rekor Monitor provides tools for verifying inclusion and consistency of log entries in the Sigstore Transparency Log (`rekor`). It helps ensure the integrity of signed artifacts using Cosign and Rekor.
 
 ## Installation
 
-1) Clone the repository:
+You can install Rekor Monitor directly from PyPI:
 
-        git clone https://github.com/nate-lavoy/supply-chain-security.git
+```bash
+pip install rekor-monitor
+
+
+## Using the Code
+
+1. **Fetch the Latest Checkpoint:**
+
+   Retrieve the latest checkpoint from the Rekor server with:
+
+   ```bash
+   rekor-monitor -c
+
+2. **Verifying Log Inclusion:**
+
+   To confirm that a specific log entry exists in the transparency log and verify the artifact's signature stored in Rekor:
+
+   ```bash
+   rekor-monitor --inclusion <logIndex> --artifact <artifactFilePath>
+
+   -Replace <logIndex> with the index of the log entry.
+
+   -Replace <artifactFilePath> with the path to your artifact file.
+
+3. **Verifying Checkpoint Consistency:**
+
+   To ensure an older checkpoint is consistent with the current Rekor checkpoint:
+
+   ```bash
+   rekor-monitor --consistency --tree-id <treeID> --tree-size <treeSize> --root-hash <rootHash>
+
+   -Replace <treeID> with the ID of the Merkle tree.
+
+   -Replace <treeSize> with the size of the previous tree.
    
-        cd supply-chain-security
-
-3) Set up a virtual environment (optional but recommended):
-
-        python3 -m venv env
-   
-        source env/bin/activate
-   
-5) Install dependencies (listed below)
-
-## Using the code
-
-1) Create an Artifact: Start by generating the artifact that will be signed and added to Rekor.
-
-2) Sign the Artifact: Use the Cosign tool to sign the artifact with your email ID, and save the signature and the certificate used for signing. This can be done using Cosign's bundle command.
-
-3) Fetch the Latest Checkpoint
-
- - To retrieve the latest checkpoint from the Rekor server:
-
-       python main.py -c
-
-4) Verifying Log Inclusion
-
-To confirm that a specific log entry exists in the transparency log and verify the artifact's signature stored in Rekor:
-
-       python main.py --inclusion <logIndex> --artifact <artifactFilePath>`
-
-5) Verifying Checkpoint Consistency
-
-To ensure an older checkpoint is consistent with the current Rekor checkpoint:
-
-       python main.py --consistency --tree-id <treeID> --tree-size <treeSize> --root-hash <rootHash>`
-
-Provide the tree ID, tree size, and root hash from the older checkpoint for verification.
-
-## Dependencies
-
- - argparse: Standard library used for argument parsing.
-
- - base64: Standard library for encoding and decoding base64 strings.
-
- - binascii: Standard library for binary and ASCII conversions.
-
- - hashlib: Standard library for hashing algorithms.
-
- - json: Standard library for JSON data handling.
-
- - requests: External library for making HTTP requests (install via pip install requests).
-
- - cryptography: External library for cryptographic functions and signature verification (install via pip install cryptography).
+   -Replace <rootHash> with the root hash of the previous checkpoint.
