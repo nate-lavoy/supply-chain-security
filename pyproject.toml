@@ -5,6 +5,9 @@ description = "An auditing system for Sigstore signatures"
 authors = ["Nate Lavoy <nl2587@nyu.edu>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+rekor-monitor = "rekor_monitor.main:main"
+
 [tool.poetry.dependencies]
 python = "^3.13"
 requests = "^2.32.3"
