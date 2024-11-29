@@ -5,3 +5,4 @@ artifact.bundle
 artifact.md
 .DS_Store
 git-filter-repo
+.coverage
