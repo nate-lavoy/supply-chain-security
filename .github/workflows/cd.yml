@@ -9,6 +9,11 @@ jobs:
   deployment:
     name: Continuous Deployment
     runs-on: ubuntu-latest
+    permissions:
+    permissions:
+      id-token: write
+      contents: write
+      attestations: write
 
     steps:
       - name: Checkout repository
@@ -31,10 +36,13 @@ jobs:
         run: poetry build
 
       - name: Generate SBOM
-        run: poetry run cyclonedx-py poetry -e -o sbom.json
+        run: poetry run cyclonedx-py poetry -o sbom.json
 
       - name: Attest SBOM
-        run: cosign attest -predicate sbom.json -type cyclonedx
+        uses: actions/attest-sbom@v1
+        with:
+          subject-path: './dist/' 
+          sbom-path: 'sbom.json'
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
@@ -42,13 +50,11 @@ jobs:
           name: build-artifacts
           path: dist/
 
-      - name: Upload SBOM and Attestation
+      - name: Upload SBOM
         uses: actions/upload-artifact@v4
         with:
-          name: sbom-and-attestation
-          path: |
-            sbom.json
-            sbom.json.sig
+          name: sbom
+          path: sbom.json
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -56,6 +62,5 @@ jobs:
           files: |
             dist/*
             sbom.json
-            sbom.json.sig
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
