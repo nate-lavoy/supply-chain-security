@@ -1,0 +1,61 @@
+name: Continuous Deployment
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deployment:
+    name: Continuous Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: poetry install --only main
+
+      - name: Build project
+        run: poetry build
+
+      - name: Generate SBOM
+        run: poetry run cyclonedx-py poetry -e -o sbom.json
+
+      - name: Attest SBOM
+        run: cosign attest -predicate sbom.json -type cyclonedx
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/
+
+      - name: Upload SBOM and Attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-and-attestation
+          path: |
+            sbom.json
+            sbom.json.sig
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/*
+            sbom.json
+            sbom.json.sig
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
