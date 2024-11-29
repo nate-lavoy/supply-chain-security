@@ -1,6 +1,5 @@
 #Ensures get_log_entry fetches a log entry and includes required keys
 
-import json
 from rekor_monitor.main import get_log_entry
 
 def test_get_log_entry():

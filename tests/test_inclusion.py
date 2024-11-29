@@ -1,6 +1,4 @@
 import subprocess
-import pytest
-import json
 import base64
 
 def test_main_inclusion_argument(monkeypatch, tmp_path):

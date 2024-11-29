@@ -14,10 +14,6 @@ def test_inclusion_proof():
     entry_id = next(iter(result))
     entry = result[entry_id]
 
-    # Extract and decode the base64-encoded body
-    encoded_body = entry['body']
-    decoded_body = json.loads(base64.b64decode(encoded_body).decode('utf-8'))
-
     # Ensure "inclusionProof" is present in the verification structure
     inclusion_proof = entry["verification"].get("inclusionProof", {})
     assert inclusion_proof, "Inclusion proof is missing in verification"
