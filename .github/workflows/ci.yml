@@ -31,19 +31,19 @@ jobs:
         uses: astral-sh/ruff-action@v1
 
       - name: Run Mypy
-        run: poetry run mypy .
+        run: poetry run mypy rekor_monitor --install-types --non-interactive
 
       - name: Run Pylint
-        run: poetry run pylint $(find . -name "*.py")
+        run: poetry run pylint rekor_monitor
 
       - name: Bandit Security Check
-        run: poetry run bandit -r .
+        run: poetry run bandit -r rekor_monitor
 
       - name: Run TruffleHog Secret Scan
         run: trufflehog git --since-commit HEAD --no-verification --fail file://.
 
       - name: Run Pytest
-        run: poetry run pytest --cov=. --cov-report=html
+        run: poetry run pytest --cov=rekor_monitor --cov-report=html
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
