@@ -10,7 +10,6 @@ jobs:
     name: Continuous Deployment
     runs-on: ubuntu-latest
     permissions:
-    permissions:
       id-token: write
       contents: write
       attestations: write
