@@ -70,5 +70,3 @@ def verify_artifact_signature(signature, public_key, artifact_filename):
     except ValueError as e:
         print("Exception in verifying artifact signature:", e)
         return False
-
-    
