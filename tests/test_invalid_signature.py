@@ -1,7 +1,6 @@
 #checks that verify_artifact_signature raises a ValueError when an invalid public key format is provided
 
 import pytest
-from cryptography.exceptions import InvalidSignature
 
 from rekor_monitor.util import verify_artifact_signature
 

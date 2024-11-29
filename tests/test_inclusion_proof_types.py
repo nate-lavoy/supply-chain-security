@@ -1,7 +1,5 @@
 #Ensures all inclusion proof values are of the expected types
 
-import json
-import base64
 from rekor_monitor.main import get_log_entry
 
 def test_inclusion_proof():
