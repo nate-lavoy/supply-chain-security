@@ -39,8 +39,9 @@ jobs:
       - name: Bandit Security Check
         run: poetry run bandit -r rekor_monitor
 
-      - name: Run TruffleHog Secret Scan
-        run: trufflehog git --since-commit HEAD --no-verification --fail file://.
+      - name: Run TruffleHog via Docker
+        run: |
+          docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest git --since-commit HEAD --no-verification --fail file://.
 
       - name: Run Pytest
         run: poetry run pytest --cov=rekor_monitor --cov-report=html
