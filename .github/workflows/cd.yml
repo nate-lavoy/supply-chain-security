@@ -55,7 +55,7 @@ jobs:
       - name: Attest SBOM
         uses: actions/attest-sbom@v1
         with:
-          subject-path: './dist/'
+          subject-path: './dist/*.whl'
           sbom-path: 'sbom.json'
 
       - name: Create Release
