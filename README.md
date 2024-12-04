@@ -2,6 +2,9 @@
 
 An auditing system for Sigstore signatures.
 
+![Build Status](https://github.com/nate-lavoy/supply-chain-security/actions/workflows/cd.yml/badge.svg)
+
+
 ## Project Description
 
 Rekor Monitor provides tools for verifying inclusion and consistency of log entries in the Sigstore Transparency Log (`rekor`). It helps ensure the integrity of signed artifacts using Cosign and Rekor.

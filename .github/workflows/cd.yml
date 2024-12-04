@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Clean build artifacts
+        run: rm -rf dist/
+
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
@@ -33,15 +36,6 @@ jobs:
 
       - name: Build project
         run: poetry build
-
-      - name: Generate SBOM
-        run: poetry run cyclonedx-py poetry -o sbom.json
-
-      - name: Attest SBOM
-        uses: actions/attest-sbom@v1
-        with:
-          subject-path: './dist/' 
-          sbom-path: 'sbom.json'
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
@@ -54,6 +48,15 @@ jobs:
         with:
           name: sbom
           path: sbom.json
+
+      - name: Generate SBOM
+        run: poetry run cyclonedx-py poetry -o sbom.json
+
+      - name: Attest SBOM
+        uses: actions/attest-sbom@v1
+        with:
+          subject-path: './dist/'
+          sbom-path: 'sbom.json'
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
