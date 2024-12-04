@@ -4,7 +4,7 @@ An auditing system for Sigstore signatures.
 
 ![Build Status](https://github.com/nate-lavoy/supply-chain-security/actions/workflows/cd.yml/badge.svg)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/nate-lavoy/supply-chain-security/badge)](https://scorecard.dev/viewer/?uri=github.com/nate-lavoy/supply-chain-security)
-
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/9764/badge)](https://www.bestpractices.dev/projects/9764)
 
 ## Project Description
 
