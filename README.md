@@ -8,7 +8,7 @@ An auditing system for Sigstore signatures.
 
 ## Project Description
 
-Rekor Monitor provides tools for verifying inclusion and consistency of log entries in the Sigstore Transparency Log (`Rekor`). It helps ensure the integrity of signed artifacts using Cosign and Rekor.
+Rekor Monitor provides tools for verifying inclusion and consistency of log entries in the Sigstore Transparency Log. It helps ensure the integrity of signed artifacts using Cosign and Rekor.
 
 ## Installation
 
